@@ -1,0 +1,1 @@
+SERVER_URL=https://192.168.40.4:4443 ROOM_ID=na5qpdyn MEDIA_FILE=./test.mp4 ./ffmpeg.sh

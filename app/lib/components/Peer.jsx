@@ -18,12 +18,6 @@ const Peer = (props) =>
 		onSetStatsPeerId
 	} = props;
 
-	const audioEnabled = (
-		Boolean(audioConsumer) &&
-		!audioConsumer.locallyPaused &&
-		!audioConsumer.remotelyPaused
-	);
-
 	const videoVisible = (
 		Boolean(videoConsumer) &&
 		!videoConsumer.locallyPaused &&
@@ -32,15 +26,6 @@ const Peer = (props) =>
 
 	return (
 		<div data-component='Peer'>
-			<div className='indicators'>
-				<If condition={!audioEnabled}>
-					<div className='icon mic-off' />
-				</If>
-
-				<If condition={!videoConsumer}>
-					<div className='icon webcam-off' />
-				</If>
-			</div>
 
 			<PeerView
 				peer={peer}

@@ -55,6 +55,7 @@ const cssBase64 = require('gulp-css-base64');
 const nib = require('nib');
 const browserSync = require('browser-sync');
 
+// eslint-disable-next-line import/extensions
 const PKG = require('./package.json');
 const BANNER = fs.readFileSync('banner.txt').toString();
 const BANNER_OPTIONS =
@@ -247,7 +248,7 @@ gulp.task('live', gulp.series(
 	'browser:base',
 	(done) =>
 	{
-		const config = require('../server/config');
+		const config = require('./config');
 
 		browserSync(
 			{
@@ -271,7 +272,7 @@ gulp.task('devel', gulp.series(
 	'browser:base',
 	async (done) =>
 	{
-		const config = require('../server/config');
+		const config = require('./config');
 
 		await new Promise((resolve) =>
 		{
@@ -317,7 +318,7 @@ gulp.task('devel:tcp', gulp.series(
 	'browser:base',
 	async (done) =>
 	{
-		const config = require('../server/config');
+		const config = require('./config');
 
 		await new Promise((resolve) =>
 		{
@@ -363,7 +364,7 @@ gulp.task('devel:vp9', gulp.series(
 	'browser:base',
 	async (done) =>
 	{
-		const config = require('../server/config');
+		const config = require('./config');
 
 		await new Promise((resolve) =>
 		{
@@ -409,7 +410,7 @@ gulp.task('devel:h264', gulp.series(
 	'browser:base',
 	async (done) =>
 	{
-		const config = require('../server/config');
+		const config = require('./config');
 
 		await new Promise((resolve) =>
 		{

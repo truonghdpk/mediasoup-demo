@@ -1,4 +1,3 @@
-import randomString from 'random-string';
 import * as stateActions from './stateActions';
 
 // This returns a redux-thunk action (a function).
@@ -19,7 +18,7 @@ export const notify = ({ type = 'info', text, title, timeout }) =>
 
 	const notification =
 	{
-		id : randomString({ length: 6 }).toLowerCase(),
+		id : Date.now(),
 		type,
 		title,
 		text,

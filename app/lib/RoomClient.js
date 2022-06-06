@@ -2,7 +2,6 @@ import protooClient from 'protoo-client';
 import * as mediasoupClient from 'mediasoup-client';
 import Logger from './Logger';
 import { getProtooUrl } from './urlFactory';
-import * as cookiesManager from './cookiesManager';
 import * as requestActions from './redux/requestActions';
 import * as stateActions from './redux/stateActions';
 import * as e2e from './e2e';
@@ -1501,14 +1500,7 @@ export default class RoomClient
 		store.dispatch(
 			stateActions.setAudioOnlyInProgress(true));
 
-		if (
-			!this._webcamProducer &&
-			this._produce &&
-			(cookiesManager.getDevices() || {}).webcamEnabled
-		)
-		{
-			this.enableWebcam();
-		}
+		this.enableWebcam();
 
 		for (const consumer of this._consumers.values())
 		{
@@ -1919,9 +1911,6 @@ export default class RoomClient
 	async changeDisplayName(displayName)
 	{
 		logger.debug('changeDisplayName() [displayName:"%s"]', displayName);
-
-		// Store in cookie.
-		cookiesManager.setUser({ displayName });
 
 		try
 		{
@@ -2392,12 +2381,7 @@ export default class RoomClient
 						canSendWebcam : this._mediasoupDevice.canProduce('video')
 					}));
 
-				this.enableMic();
-
-				const devicesCookie = cookiesManager.getDevices();
-
-				if (!devicesCookie || devicesCookie.webcamEnabled || this._externalVideo)
-					this.enableWebcam();
+				this.enableWebcam();
 
 				this._sendTransport.on('connectionstatechange', (connectionState) =>
 				{

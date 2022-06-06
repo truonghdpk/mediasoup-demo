@@ -1194,7 +1194,7 @@ export class RoomClient
 					ordered        : false,
 					maxRetransmits : 1,
 					label          : 'chat',
-					priority       : 'medium',
+					// priority       : 'medium',
 					appData        : { info: 'my-chat-DataProducer' }
 				});
 
@@ -1260,7 +1260,7 @@ export class RoomClient
 					ordered           : false,
 					maxPacketLifeTime : 2000,
 					label             : 'bot',
-					priority          : 'medium',
+					// priority          : 'medium',
 					appData           : { info: 'my-bot-DataProducer' }
 				});
 
